@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbal Reasoning Quiz</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100%;
+            background:#09001d;
+            background-position: center;
+            background-size: cover;
+            padding-left: 5%;
+            padding-right: 5%;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .quiz-container {
+            
+            max-width: 1000px;
+            background:rgba(255,255,255,0.58);
+            padding: 30px;
+            margin: 50px auto;
+            border-radius: 12px;
+            border-color: #09001d;
+            border-width: 10px;
+            border-style: groove;
+            box-shadow: 0 0 30px #c40094;
+            scroll-behavior: auto;
+        }
+        .quiz-container h1{
+            color:#c40094;
+            text-align: center;
+            text-decoration:underline #09001d;
+            
+            
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            background: lightgrey;
+            color:black;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+            text-align: left;
+        }
+        .options li:hover, .options li.selected {
+            background:#c40094;
+            -webkit-text-fill-color: white;
+        }
+        #submit {
+            background:#c40094;
+            border-radius:  50px; 
+            border-color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 18px;
+            margin:0 auto;
+            transform: translate(325%);
+        }
+        #submit:hover {
+            background:black;
+            -webkit-text-fill-color: white;
+        }
+        #result {
+            font-size: 22px;
+            margin-top: 20px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Verbal Reasoning Quiz</h1>
+        <div id="quiz"></div>
+        <button id="submit">Submit Quiz</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "Which word does NOT belong in the group?",
+                options: ["Apple", "Banana", "Mango", "Carrot"],
+                answer: "Carrot"
+            },
+            {
+                question: "Book is to Read as Knife is to ?",
+                options: ["Cut", "Eat", "Hold", "Sharpen"],
+                answer: "Cut"
+            },
+            {
+                question: "Arrange the words in order: College, Job, School, Retirement, Primary School",
+                options: ["5, 3, 1, 2, 4", "3, 5, 1, 2, 4", "1, 3, 5, 2, 4", "5, 1, 3, 2, 4"],
+                answer: "5, 3, 1, 2, 4"
+            },
+            {
+                question: "Find the missing number: 2, 6, 12, 20, ?, 42",
+                options: ["30", "28", "24", "32"],
+                answer: "30"
+            },
+            {
+                question: "Choose the synonym for 'Abundant'",
+                options: ["Scarce", "Plentiful", "Small", "Empty"],
+                answer: "Plentiful"
+            },
+            {
+                question: "Choose the antonym for 'Expand'",
+                options: ["Grow", "Contract", "Increase", "Enlarge"],
+                answer: "Contract"
+            },
+            {
+                question: "He was very tired, ______ he continued working.",
+                options: ["and", "but", "because", "since"],
+                answer: "but"
+            },
+            {
+                question: "If MANGO is coded as 41576, what is the code for APPLE?",
+                options: ["15537", "14453", "13456", "15246"],
+                answer: "14453"
+            },
+            {
+                question: "A man is looking at a picture and says 'That man’s father is my father’s son'. Who is in the picture?",
+                options: ["His father", "His son", "His uncle", "Himself"],
+                answer: "His son"
+            },
+            {
+                question: "Which word can be formed from 'PRODUCTION'?",
+                options: ["ACTION", "PRODUCT", "COMPUTER", "OPTION"],
+                answer: "PRODUCT"
+            }
+        ];
+
+        const quizContainer = document.getElementById("quiz");
+        const submitButton = document.getElementById("submit");
+        const resultContainer = document.getElementById("result");
+
+        function loadQuiz() {
+            quizContainer.innerHTML = "";
+            quizData.forEach((q, index) => {
+                const questionElement = document.createElement("div");
+                questionElement.classList.add("question");
+                questionElement.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
+                
+                const optionsList = document.createElement("ul");
+                optionsList.classList.add("options");
+                
+                q.options.forEach(option => {
+                    const optionItem = document.createElement("li");
+                    optionItem.textContent = option;
+                    optionItem.onclick = () => selectAnswer(index, option, optionItem);
+                    optionsList.appendChild(optionItem);
+                });
+                
+                quizContainer.appendChild(questionElement);
+                quizContainer.appendChild(optionsList);
+            });
+        }
+
+        let selectedAnswers = {};
+
+        function selectAnswer(questionIndex, answer, optionElement) {
+            selectedAnswers[questionIndex] = answer;
+            const options = optionElement.parentNode.children;
+            for (let opt of options) {
+                opt.classList.remove("selected");
+            }
+            optionElement.classList.add("selected");
+        }
+
+        submitButton.onclick = function () {
+            let score = 0;
+            quizData.forEach((q, index) => {
+                if (selectedAnswers[index] === q.answer) {
+                    score++;
+                }
+            });
+            resultContainer.textContent = `You scored ${score} out of ${quizData.length}!`;
+        };
+
+        loadQuiz();
+    </script>
+</body>
+</html>

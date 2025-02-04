@@ -1,0 +1,63 @@
+let questions = [
+    {
+        numb: 1,
+        question: "Arrange the words given below in a meaningful sequence. 1. Key	2. Door	3. Lock 4. Room	5. Switch on	",
+        answer: "c) 1,3,2,4,5",
+        option:[
+            "a) 5, 1, 2, 4, 3",
+            "b) 4, 2, 1, 5, 3",
+            "c) 1, 3, 2, 4, 5",
+            "d) 1, 2, 3, 5, 4" 
+
+        ]
+    },
+    {
+        numb: 2,
+        question: "Statements: Standard of living among the middle class society is constantly going up since part of few years.Indian Economy is observing remarkable growth.",
+        answer: "a) Statement I is the cause and statement II is its effect.",
+        option:[
+            "a) Statement I is the cause and statement II is its effect.",
+            "b) Statement II is the cause and statement I is its effect.",
+            "c) Both the statements I and II are independent causes.",
+            "d) Both the statements I and II are effects of independent causes."
+
+
+        ]
+    },
+    {
+        numb: 3,
+        question: "One morning Udai and Vishal were talking to each other face to face at a crossing. If Vishal's shadow was exactly to the left of Udai, which direction was Udai facing?",
+        answer: "c) North",
+        option:[
+            "a) East",
+            "b) West",
+            "c) North",
+            "d) South"
+
+        ]
+    },
+    {
+        numb: 4,
+        question: "Statements: Some actors are singers. All the singers are dancers.Conclusions:Some actors are dancers.",
+        answer: "a) Only (1) conclusion follows",
+        option:[
+            "a) Only (1) conclusion follows",
+            "b) Only (2) conclusion follows",
+            "c) Either (1) or (2) follows",
+            "d) Neither (1) nor (2) follows"
+
+
+        ]
+    },
+    {
+        numb: 5,
+        question: "Which one of the following is always found in 'Bravery'?",
+        answer: "c) Courage",
+        option:[
+            "a) Experience",
+            "b) Power",
+            "c) Courage",
+            "d) Knowledge"
+        ]
+    },
+]
